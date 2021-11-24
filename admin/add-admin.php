@@ -3,7 +3,7 @@
     <div class="wrapper">
         <h1>Add Admin</h1>
         <br/><br/>
-        <form actions="" method="POST"></form>
+        <form actions="" method="POST">
             <table class="tbl-30">
                 <tr>
                     <td>Full Name: </td>
