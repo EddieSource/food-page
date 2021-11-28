@@ -1,4 +1,5 @@
 <?php include("partials/menu.php"); ?>
+
 <div class="main-content">
     <div class="wrapper">
         <h1>Add Admin</h1>
@@ -26,7 +27,7 @@
                     </td>
                 </tr>
 
-            </table>
+            </table> 
         </form>
     </div>
 </div>
@@ -38,8 +39,21 @@
 
     // whether the value(use the name property) on submit is passed using post method or not 
     if(isset($_POST['submit'])) {
-        // button clicked
-        echo "Button Clicked"; 
+        // 1. get data from form (use name property)
+        $full_name = $_POST['full_name']; 
+        $username = $_POST['username']; 
+        $password = md5($_POST['password']); // password encryption with md5 
+        
+        // 2. create sql query
+        $sql = "INSERT INTO tbl_admin SET 
+            full_name = '$full_name', 
+            username='$username', 
+            password='$password'
+        "; 
+        
+
+
+        
     }
     else {
         // buton not clicked
