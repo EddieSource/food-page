@@ -21,36 +21,44 @@
                         <th>Username</th>
                         <th>Actions</th>
                     </tr>
+                    
+                    <?php
+                        // Query to Get all Admin
+                        $sql="SELECT * FROM tbl_admin";
+                        // Execute the quey
+                        $res = mysqli_query($conn, $sql); 
+                        if($res==TRUE){
+                            // count rows to check whether we have data in database or not
+                            $count = mysqli_num_rows($res); 
+                            $sn = 1; 
+                            if($count > 0){
+                                // get data row by row
+                                while($row=mysqli_fetch_assoc($res)){
+                                    $id=$row['id']; 
+                                    $full_name=$row['full_name']; 
+                                    $username=$row['username']; 
 
-                    <tr>
-                        <td>1.</td>
-                        <td>Eddie</td>
-                        <td>EddieSource</td>
-                        <td>
-                            <a href="#" class="btn-secondary">Update Admin</a>
-                            <a href="#" class="btn-danger">Delete Admin</a>
-                        </td>
-                    </tr>
+                                    // display the values in table
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $sn++; ?></td>
+                                        <td><?php echo $full_name; ?></td>
+                                        <td><?php echo $username; ?></td>
+                                        <td>
+                                            <a href="#" class="btn-secondary">Update Admin</a>
+                                            <a href="#" class="btn-danger">Delete Admin</a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
 
-                    <tr>
-                        <td>2.</td>
-                        <td>Eddie</td>
-                        <td>EddieSource</td>
-                        <td>
-                            <a href="#" class="btn-secondary">Update Admin</a>
-                            <a href="#" class="btn-danger">Delete Admin</a>
-                        </td>
-                    </tr>
+                            }
 
-                    <tr>
-                        <td>3.</td>
-                        <td>Eddie</td>
-                        <td>EddieSource</td>
-                        <td>
-                            <a href="#" class="btn-secondary">Update Admin</a>
-                            <a href="#" class="btn-danger">Delete Admin</a>
-                        </td>
-                    </tr>
+                        } else {
+
+                        }
+                    ?>
 
                 </table>
 
