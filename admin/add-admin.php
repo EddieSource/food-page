@@ -4,6 +4,13 @@
     <div class="wrapper">
         <h1>Add Admin</h1>
         <br/><br/>
+        <?php 
+            if(isset($_SESSION['add'])){
+                echo $_SESSION['add']; // dispaly session message if set
+                unset($_SESSION['add']); // remove session message
+            }
+        ?>
+
         <form actions="" method="POST">
             <table class="tbl-30">
                 <tr>
@@ -51,12 +58,24 @@
             password='$password'
         "; 
         
+        // 3. execute query and save data in database
+        $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
 
+        //4. check whether the data is inserted or not
+        if($res==TRUE){
+            // Data Inserted
+            // create a session variable to display message
+            $_SESSION['add'] = "Admin Added Successfully";
+            // Redirect page to Manage Admin
+            header("location: ".SITEURL."/admin/manage-admin.php"); 
+        }
+        else {
+            // failed
+            $_SESSION['add'] = "Failed To Add Admin";
+            // Redirect page to Add Admin
+            header("location: ".SITEURL."/admin/add-admin.php"); 
+        }
 
         
-    }
-    else {
-        // buton not clicked
-        echo "Buttton Not Clicked"; 
     }
 ?>

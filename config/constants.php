@@ -1,5 +1,9 @@
-<?php  
+<?php 
+    // Start Session
+    session_start(); 
+
     // define some contants here
+    define('SITEURL', 'http://localhost/food-order');
     define('LOCALHOST', 'localhost'); 
     define('DB_USERNAME', 'root'); 
     define('DB_PASSWORD', ''); 
