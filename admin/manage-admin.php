@@ -6,9 +6,15 @@
                 <h1>Manage Admin</h1>
                 <br />
                 <?php 
+                    // whether $_SESSION['add'] is declared and different than null
                     if(isset($_SESSION['add'])){
                         echo $_SESSION['add']; //
                         unset($_SESSION['add']); // remove session message
+                    }
+
+                    if(isset($_SESSION['delete'])) {
+                        echo $_SESSION['delete']; 
+                        unset($_SESSION['delete']); 
                     }
                 ?>
                 <br /><br/>
@@ -46,7 +52,7 @@
                                         <td><?php echo $username; ?></td>
                                         <td>
                                             <a href="#" class="btn-secondary">Update Admin</a>
-                                            <a href="#" class="btn-danger">Delete Admin</a>
+                                            <a href="<?php echo SITEURL; ?>/admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-danger">Delete Admin</a>
                                         </td>
                                     </tr>
                                     <?php
