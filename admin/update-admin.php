@@ -60,6 +60,28 @@
     // check whether the submit button is clicked or not
     if(isset($_POST['submit'])) {
         // get all value from form
+        $id = $_POST['id']; 
+        $full_name = $_POST['full_name']; 
+        $username=$_POST['username']; 
+        
+        // create a sql query to update admin
+        $sql = "UPDATE tbl_admin SET 
+        full_name = '$full_name', 
+        username='$username' 
+        WHERE id = '$id'"; 
+
+        $res = mysqli_query($conn, $sql); 
+
+        if($res==true) {
+            $_SESSION['update'] = "<div class='success'>Admin Update. </div>"; 
+            header('location:'.SITEURL.'/admin/manage-admin.php');
+        }
+        else {
+            // if failed;
+            $_SESSION['update'] = "<div class='error'>Failed to delete admin </div>"; 
+            header('location:'.SITEURL.'/admin/manage-admin.php'); 
+        }
+
     }
 
 ?>
