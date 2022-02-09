@@ -125,3 +125,11 @@ table tr td{
 }
 
 
+/* CSS for Login */
+.login{
+    border: 1px solid grey;
+    width: 30%;
+    margin: 5% auto;
+}
+
+
